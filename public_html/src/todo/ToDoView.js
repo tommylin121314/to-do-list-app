@@ -68,18 +68,71 @@ export default class ToDoView {
         for (let i = 0; i < list.items.length; i++) {
             // NOW BUILD ALL THE LIST ITEMS
             let listItem = list.items[i];
-            let listItemElement = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card'>"
-                                + "<div class='task-col' contenteditable>" + listItem.description + "</div>"
-                                + "<div class='due-date-col'>" + listItem.dueDate + "</div>"
-                                + "<div class='status-col'>" + listItem.status + "</div>"
-                                + "<div class='list-controls-col'>"
-                                + " <div class='list-item-control material-icons'>keyboard_arrow_up</div>"
-                                + " <div class='list-item-control material-icons'>keyboard_arrow_down</div>"
-                                + " <div class='list-item-control material-icons'>close</div>"
-                                + " <div class='list-item-control'></div>"
-                                + " <div class='list-item-control'></div>"
-                                + "</div>";
-            itemsListDiv.innerHTML += listItemElement;
+            //let listItemElementt = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card'>"
+                                //+ "<div class='task-col' contenteditable>" + listItem.description + "</div>"
+                                //+ "<div class='due-date-col'>" + listItem.dueDate + "</div>"
+                                //+ "<div class='status-col'>" + listItem.status + "</div>"
+                                //+ "<div class='list-controls-col'>"
+                                //+ " <div class='list-item-control material-icons'>keyboard_arrow_up</div>"
+                                //+ " <div class='list-item-control material-icons'>keyboard_arrow_down</div>"
+                                //+ " <div class='list-item-control material-icons'>close</div>"
+                                //+ " <div class='list-item-control'></div>"
+                                //+ " <div class='list-item-control'></div>"
+                                //+ "</div>";
+
+            let listItemElement = document.createElement("div");
+            listItemElement.id = 'todo-list-item-' + listItem.id;
+            listItemElement.className = 'list-item-card';
+
+            let taskNameDiv = document.createElement('div');
+            taskNameDiv.className = 'task-col';
+            taskNameDiv.innerHTML = listItem.description;
+
+            let dueDateDiv = document.createElement('div');
+            dueDateDiv.className = 'due-date-col';
+            dueDateDiv.innerHTML = listItem.dueDate;
+
+            let statusDiv = document.createElement('div');
+            statusDiv.className = 'status-col';
+            statusDiv.innerHTML = listItem.status;
+
+            let controlDiv = document.createElement('div');
+            controlDiv.className = 'list-controls-col';
+
+            let upArrow = document.createElement('div');
+            upArrow.className = 'list-item-control material-icons';
+            upArrow.innerHTML = 'keyboard_arrow_up';
+
+            let downArrow = document.createElement('div');
+            downArrow.className = 'list-item-control material-icons';
+            downArrow.innerHTML = 'keyboard_arrow_down';
+
+            let deleteListButton = document.createElement("div");
+            deleteListButton.className = 'list-item-control material-icons';
+            deleteListButton.innerHTML = 'close';
+
+            let listItemControlOne = document.createElement("div");
+            listItemControlOne.className = 'list-item-control';
+
+            let listItemControlTwo = document.createElement("div");
+            listItemControlTwo.className = 'list-item-control';
+
+            listItemElement.appendChild(taskNameDiv);
+            listItemElement.appendChild(dueDateDiv);
+            listItemElement.appendChild(statusDiv);
+            controlDiv.appendChild(upArrow);
+            controlDiv.appendChild(downArrow);
+            controlDiv.appendChild(deleteListButton);
+            controlDiv.appendChild(listItemControlOne);
+            controlDiv.appendChild(listItemControlTwo);
+            listItemElement.appendChild(controlDiv);
+
+            //deleteListButton.onclick = (event) => {
+            //    handleDeleteClicked(event);
+            //}
+
+            //itemsListDiv.appendChild(listItemElement);
+            itemsListDiv.appendChild(listItemElement);
         }
     }
 
