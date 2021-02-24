@@ -44,7 +44,7 @@
 }
 
 .list-item-card {
-    height: 5%;
+    height: 24px;
     display: flex;
     flex-direction: row;
 }
