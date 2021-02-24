@@ -30,6 +30,7 @@ export default class ToDoView {
             }
             listElement.style.color = '#000000';
             listElement.style.backgroundColor = '#FFC819';
+            listsElement.insertBefore(listElement, listsElement.childNodes[0]);
             thisController.handleLoadList(newList.id);
         }
     }
