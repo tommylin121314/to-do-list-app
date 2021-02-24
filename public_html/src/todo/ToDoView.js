@@ -24,6 +24,12 @@ export default class ToDoView {
         // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST
         let thisController = this.controller;
         listElement.onmousedown = function() {
+            for(var i = 0; i < listsElement.children.length; i++){
+                listsElement.children.item(i).style.backgroundColor = '';
+                listsElement.children.item(i).style.color = '#FFFFFF';
+            }
+            listElement.style.color = '#000000';
+            listElement.style.backgroundColor = '#FFC819';
             thisController.handleLoadList(newList.id);
         }
     }
