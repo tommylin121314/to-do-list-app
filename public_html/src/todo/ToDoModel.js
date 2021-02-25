@@ -143,8 +143,8 @@ export default class ToDoModel {
     /**
      * Remove the itemToRemove from the current list and refresh.
      */
-    removeItem(itemToRemove) {
-        this.currentList.removeItem(itemToRemove);
+    removeItem(itemId) {
+        this.currentList.removeItem(itemId);
         this.view.viewList(this.currentList);
     }
 

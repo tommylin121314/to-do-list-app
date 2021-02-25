@@ -45,10 +45,10 @@ export default class ToDoList {
      * 
      * @param {TodoListItem} itemToRemove Item to remove from the list.
      */
-    removeItem(itemToRemove) {
+    removeItem(itemId) {
         let indexOfItem = -1;
         for (let i = 0; (i < this.items.length) && (indexOfItem < 0); i++) {
-            if (this.items[i].id === itemToRemove.id) {
+            if (this.items[i].id == itemId) {
                 indexOfItem = i;
             }
         }

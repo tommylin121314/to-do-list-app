@@ -65,6 +65,9 @@ export default class ToDoView {
         // GET RID OF ALL THE ITEMS
         this.clearItemsList();
 
+        // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST
+        let thisController = this.controller;
+
         for (let i = 0; i < list.items.length; i++) {
             // NOW BUILD ALL THE LIST ITEMS
             let listItem = list.items[i];
@@ -127,9 +130,9 @@ export default class ToDoView {
             controlDiv.appendChild(listItemControlTwo);
             listItemElement.appendChild(controlDiv);
 
-            //deleteListButton.onclick = (event) => {
-            //    handleDeleteClicked(event);
-            //}
+            deleteListButton.onclick = (event) => {
+                thisController.handleDeleteItemClicked(event);
+            }
 
             //itemsListDiv.appendChild(listItemElement);
             itemsListDiv.appendChild(listItemElement);

@@ -36,4 +36,10 @@ export default class ToDoController {
         // UNLOAD THE CURRENT LIST AND INSTEAD LOAD THE CURRENT LIST
         this.model.loadList(listId);
     }
+
+    handleDeleteItemClicked(event) {
+        let idOfItemDiv = event.target.parentElement.parentElement.id;
+        let itemId = idOfItemDiv.slice(15);
+        this.model.removeItem(itemId);
+    }
 }
