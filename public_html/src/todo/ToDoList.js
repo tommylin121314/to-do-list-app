@@ -52,7 +52,19 @@ export default class ToDoList {
                 indexOfItem = i;
             }
         }
+        let itemRemoved = this.items[indexOfItem];
         this.items.splice(indexOfItem, 1);
+        return itemRemoved;
+    }
+
+    insertItem(index, item) {
+        if(index >= this.items.length || index < 0) {
+            return;
+        }
+        for(let i = this.items.length; i > index; i--) {
+            this.items[i] = this.items[i - 1];
+        }
+        this.items[index] = item;
     }
 
     /**

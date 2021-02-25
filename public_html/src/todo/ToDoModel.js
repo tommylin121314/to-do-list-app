@@ -4,6 +4,7 @@ import ToDoList from './ToDoList.js'
 import ToDoListItem from './ToDoListItem.js'
 import jsTPS from '../common/jsTPS.js'
 import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
+import RemoveItem_Transaction from './transactions/removeItem_Transaction.js'
 
 /**
  * ToDoModel
@@ -115,6 +116,12 @@ export default class ToDoModel {
         this.addItemToList(list, newItem);
     }
 
+    insertItem(index, item) {
+        console.log(index, item.getDescription());
+        this.currentList.insertItem(index, item);
+        this.view.viewList(this.currentList);
+    }
+
     /**
      * Load the items for the listId list into the UI.
      */
@@ -131,21 +138,19 @@ export default class ToDoModel {
         }
     }
 
-    /**
-     * Redo the current transaction if there is one.
-     */
-    redo() {
-        if (this.tps.hasTransactionToRedo()) {
-            this.tps.doTransaction();
-        }
-    }   
-
+    removeItemTransaction(id){
+        let transaction = new RemoveItem_Transaction(this, id);
+        this.tps.addTransaction(transaction);
+    }
     /**
      * Remove the itemToRemove from the current list and refresh.
      */
     removeItem(itemId) {
-        this.currentList.removeItem(itemId);
+        let itemRemoved = this.currentList.removeItem(itemId);
+        console.log("item removed");
+        console.log("desc: " + itemRemoved.getDescription());
         this.view.viewList(this.currentList);
+        return itemRemoved;
     }
 
     /**
@@ -174,7 +179,17 @@ export default class ToDoModel {
      */
     undo() {
         if (this.tps.hasTransactionToUndo()) {
+            console.log("undo");
             this.tps.undoTransaction();
         }
     } 
+
+    /**
+     * Redo the current transaction if there is one.
+     */
+    redo() {
+        if (this.tps.hasTransactionToRedo()) {
+            this.tps.doTransaction();
+        }
+    }   
 }

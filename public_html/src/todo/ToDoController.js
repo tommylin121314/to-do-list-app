@@ -40,6 +40,6 @@ export default class ToDoController {
     handleDeleteItemClicked(event) {
         let idOfItemDiv = event.target.parentElement.parentElement.id;
         let itemId = idOfItemDiv.slice(15);
-        this.model.removeItem(itemId);
+        this.model.removeItemTransaction(itemId);
     }
 }

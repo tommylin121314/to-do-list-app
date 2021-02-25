@@ -148,7 +148,7 @@ export default class jsTPS {
 
         // ADD THE TRANSACTION
         this.transactions[this.mostRecentTransaction+1] = transaction;
-
+        console.log("transaction added at index " + (this.mostRecentTransaction + 1));
         // AND EXECUTE IT
         this.doTransaction();
     }
@@ -164,6 +164,7 @@ export default class jsTPS {
         if (this.hasTransactionToRedo()) {
             this.performingDo = true;
             let transaction = this.transactions[this.mostRecentTransaction+1];
+            console.log("doing transaction at index " + (this.mostRecentTransaction + 1));
             transaction.doTransaction();
             this.mostRecentTransaction++;
             this.performingDo = false;
@@ -178,6 +179,7 @@ export default class jsTPS {
         if (this.hasTransactionToUndo()) {
             this.performingUndo = true;
             let transaction = this.transactions[this.mostRecentTransaction];
+            console.log("undoing transaction at index " + (this.mostRecentTransaction));
             transaction.undoTransaction();
             this.mostRecentTransaction--;
             this.performingUndo = false;
