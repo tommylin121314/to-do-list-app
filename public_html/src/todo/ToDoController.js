@@ -42,4 +42,10 @@ export default class ToDoController {
         let itemId = idOfItemDiv.slice(15);
         this.model.removeItemTransaction(itemId);
     }
+
+    handleStatusSelectChanged(event) {
+        let idOfItemDiv = event.target.parentElement.parentElement.id;
+        let itemId = idOfItemDiv.slice(15);
+        this.model.changeItemStatusTransaction(itemId);
+    }
 }

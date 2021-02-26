@@ -40,6 +40,25 @@ export default class ToDoList {
         this.items.push(itemToAdd);
     }
 
+    changeItemStatus(itemId) {
+        for(let i = 0; i < this.items.length; i++) {
+            if(itemId == this.items[i].getId()) {
+                let item = this.items[i];
+                if(item.getStatus() == 'complete') {
+                    console.log("swapped from complete to ");
+                    item.setStatus('incomplete');
+                    console.log(item.status);
+                }
+                else {
+                    console.log("swapped from incomplete to ");
+                    item.setStatus('complete');
+                    console.log(item.status);
+                }
+                break;
+            }
+        }
+    }
+
     /**
      * Finds and then removes the argument from the list.
      * 

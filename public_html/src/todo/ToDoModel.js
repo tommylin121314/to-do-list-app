@@ -5,6 +5,7 @@ import ToDoListItem from './ToDoListItem.js'
 import jsTPS from '../common/jsTPS.js'
 import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
 import RemoveItem_Transaction from './transactions/removeItem_Transaction.js'
+import ChangeItemStatus_Transaction from './transactions/ChangeItemStatus_Transaction.js'
 
 /**
  * ToDoModel
@@ -102,6 +103,16 @@ export default class ToDoModel {
         this.currentList.items.push(newItem);
         this.view.viewList(this.currentList);
         return newItem;
+    }
+
+    changeItemStatusTransaction(itemId) {
+        let transaction = new ChangeItemStatus_Transaction(this, itemId);
+        this.tps.addTransaction(transaction);
+    }
+
+    changeItemStatus(itemId) {
+        this.currentList.changeItemStatus(itemId);
+        this.view.viewList(this.currentList);
     }
 
     /**

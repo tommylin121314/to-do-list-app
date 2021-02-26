@@ -97,7 +97,21 @@ export default class ToDoView {
 
             let statusDiv = document.createElement('div');
             statusDiv.className = 'status-col';
-            statusDiv.innerHTML = listItem.status;
+
+            let statusSelect = document.createElement('select');
+            let statusOne = document.createElement('option');
+            let statusTwo = document.createElement('option');
+            statusOne.innerHTML = 'incomplete';
+            statusTwo.innerHTML = 'complete';
+            if(listItem.status == 'incomplete') {
+                statusOne.selected = true;
+            }
+            else {
+                statusTwo.selected = true;
+            }
+            statusSelect.appendChild(statusOne);
+            statusSelect.appendChild(statusTwo);
+            statusDiv.appendChild(statusSelect);
 
             let controlDiv = document.createElement('div');
             controlDiv.className = 'list-controls-col';
@@ -132,6 +146,10 @@ export default class ToDoView {
 
             deleteListButton.onclick = (event) => {
                 thisController.handleDeleteItemClicked(event);
+            }
+
+            statusSelect.onchange = (event) => {
+                thisController.handleStatusSelectChanged(event);
             }
 
             //itemsListDiv.appendChild(listItemElement);
