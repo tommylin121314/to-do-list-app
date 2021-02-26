@@ -15,6 +15,7 @@ export default class ToDoListItem {
     constructor(initId) {
         this.id = initId;
         this.description = "Unknown";
+        this.oldDate = '';
         this.dueDate = new Date().toISOString().split('T')[0];
         this.status = "incomplete";
     }
@@ -47,5 +48,13 @@ export default class ToDoListItem {
 
     setStatus(initStatus) {
         this.status = initStatus;
+    }
+
+    getOldDate() {
+        return this.oldDate;
+    }
+
+    setOldDate(oldDate) {
+        this.oldDate = oldDate;
     }
 }

@@ -54,4 +54,16 @@ export default class ToDoController {
         let itemId = idOfItemDiv.slice(15);
         this.model.swapItemsTransaction(itemId, up);
     }
+
+    handleDateChanged(event) {
+        let idOfItemDiv = event.target.parentElement.parentElement.id;
+        let itemId = idOfItemDiv.slice(15);
+        this.model.changeItemDateTransaction(itemId, event.target.value);
+    }
+
+    handleDateFocus(event) {
+        let idOfItemDiv = event.target.parentElement.parentElement.id;
+        let itemId = idOfItemDiv.slice(15);
+        this.model.changeItemOldDate(itemId, event.target.value);
+    }
 }

@@ -7,6 +7,7 @@ import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
 import RemoveItem_Transaction from './transactions/removeItem_Transaction.js'
 import ChangeItemStatus_Transaction from './transactions/ChangeItemStatus_Transaction.js'
 import SwapItems_Transaction from './transactions/SwapItems_Transaction.js'
+import ChangeDate_Transaction from './transactions/ChangeDate_Transaction.js'
 
 /**
  * ToDoModel
@@ -114,6 +115,22 @@ export default class ToDoModel {
     changeItemStatus(itemId) {
         this.currentList.changeItemStatus(itemId);
         this.view.viewList(this.currentList);
+    }
+
+    changeItemOldDate(id, oldDate) {
+        let index = this.currentList.getIndexOfId(id);
+        this.currentList.changeItemOldDate(index, oldDate);
+    }
+
+    changeItemDate(id, date) {
+        this.currentList.changeItemDate(id, date);
+        this.view.viewList(this.currentList);
+    }
+
+    changeItemDateTransaction(id, newDate) {
+        let oldDate = this.currentList.items[this.currentList.getIndexOfId(id)].getOldDate();
+        let transaction = new ChangeDate_Transaction(this, id, oldDate, newDate);
+        this.tps.addTransaction(transaction);
     }
 
     /**

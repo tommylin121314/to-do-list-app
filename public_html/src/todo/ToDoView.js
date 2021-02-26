@@ -93,7 +93,10 @@ export default class ToDoView {
 
             let dueDateDiv = document.createElement('div');
             dueDateDiv.className = 'due-date-col';
-            dueDateDiv.innerHTML = listItem.dueDate;
+            let dateSelect = document.createElement('input');
+            dateSelect.type = 'date';
+            dateSelect.value = listItem.dueDate;
+            dueDateDiv.appendChild(dateSelect);
 
             let statusDiv = document.createElement('div');
             statusDiv.className = 'status-col';
@@ -158,6 +161,14 @@ export default class ToDoView {
 
             statusSelect.onchange = (event) => {
                 thisController.handleStatusSelectChanged(event);
+            }
+
+            dateSelect.onchange = (event) => {
+                thisController.handleDateChanged(event);
+            }
+
+            dateSelect.onfocus = (event) => {
+                thisController.handleDateFocus(event);
             }
 
             //itemsListDiv.appendChild(listItemElement);

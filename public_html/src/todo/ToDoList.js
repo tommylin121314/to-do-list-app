@@ -59,6 +59,15 @@ export default class ToDoList {
         }
     }
 
+    changeItemDate(id, date) {
+        let index = this.getIndexOfId(id);
+        this.items[index].setDueDate(date);
+    }
+
+    changeItemOldDate(index, oldDate) {
+        this.items[index].setOldDate(oldDate);
+    }
+
     /**
      * Finds and then removes the argument from the list.
      * 
