@@ -76,6 +76,19 @@ export default class ToDoList {
         return itemRemoved;
     }
 
+    swapItems(up, index) {
+        if(up) {
+            let temp = this.items[index];
+            this.items[index] = this.items[index - 1];
+            this.items[index - 1] = temp;
+        }
+        else {
+            let temp = this.items[index];
+            this.items[index] = this.items[index + 1];
+            this.items[index + 1] = temp;
+        }
+    }
+
     insertItem(index, item) {
         if(index >= this.items.length || index < 0) {
             return;
@@ -95,6 +108,15 @@ export default class ToDoList {
         for (let i = 0; i < this.items.length; i++) {
             let testItem = this.items[i];
             if (testItem === item) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    getIndexOfId(itemId) {
+        for (let i = 0; i < this.items.length; i++) {
+            let testItem = this.items[i];
+            if (testItem.id == itemId) {
                 return i;
             }
         }

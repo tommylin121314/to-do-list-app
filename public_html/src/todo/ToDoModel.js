@@ -185,6 +185,21 @@ export default class ToDoModel {
         this.view = initView;
     }
 
+    swapItemsTransaction(id, up) {
+        let index = this.currentList.getIndexOfId(id);
+        let transaction = new SwapItems_Transaction(this, up, index);
+        this.tps.addTransaction(transaction);
+    }
+
+    swapItems(up, index) {
+        this.currentList.swapItems(up, index);
+        this.view.viewList(this.currentList);
+    }
+
+    getIndexOfId(id) {
+        return this.currentList.getIndexOfId(id);
+    }
+
     /**
      * Undo the most recently done transaction if there is one.
      */

@@ -144,6 +144,14 @@ export default class ToDoView {
             controlDiv.appendChild(listItemControlTwo);
             listItemElement.appendChild(controlDiv);
 
+            upArrow.onclick = (event) => {
+                thisController.handleArrowClicked(event, true);
+            }
+
+            downArrow.onclick = (event) => {
+                thisController.handleArrowClicked(event, false);
+            }
+
             deleteListButton.onclick = (event) => {
                 thisController.handleDeleteItemClicked(event);
             }
