@@ -6,6 +6,7 @@ import jsTPS from '../common/jsTPS.js'
 import AddNewItem_Transaction from './transactions/AddNewItem_Transaction.js'
 import RemoveItem_Transaction from './transactions/removeItem_Transaction.js'
 import ChangeItemStatus_Transaction from './transactions/ChangeItemStatus_Transaction.js'
+import SwapItems_Transaction from './transactions/SwapItems_Transaction.js'
 
 /**
  * ToDoModel

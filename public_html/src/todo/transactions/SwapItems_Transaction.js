@@ -18,6 +18,7 @@ export default class SwapItems_Transaction extends jsTPS_Transaction {
     }
 
     undoTransaction() {
-        this.model.swapItems(!(this.up), this.index);
+        let undoDirection = !(this.up);
+        this.model.swapItems(undoDirection, this.index);
     }
 }
