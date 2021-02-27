@@ -27,6 +27,7 @@
 
 #navbar {
     box-shadow: 2px 2px 2px var(--swatch-primary); 
+    margin-bottom: 5px;
 }
 
 #left-sidebar {
@@ -42,7 +43,9 @@
 #title-div {
     color: rgb(255,200,25);
     font-weight: bold;
-    font-size: 14pt;
+    font-size: 20pt;
+    margin-left: 10px;
+    margin-top: 7px;
 }
 
 #left-sidebar-header {

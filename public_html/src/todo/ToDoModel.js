@@ -222,6 +222,16 @@ export default class ToDoModel {
 
     swapItemsTransaction(id, up) {
         let index = this.currentList.getIndexOfId(id);
+
+        if(up && (index == 0)) {
+            console.log("index 0 up");
+            return;
+        }
+        else if((!up) && (index == this.currentList.items.length - 1)) {
+            console.log("last item down");
+            return;
+        }
+
         let transaction = new SwapItems_Transaction(this, up, index);
         this.tps.addTransaction(transaction);
     }

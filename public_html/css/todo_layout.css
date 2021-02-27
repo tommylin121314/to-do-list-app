@@ -20,7 +20,8 @@
 
 #left-sidebar-header {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 50% 50%;
+    height: 50px;
 }
 
 #left-sidebar-header-text {
@@ -44,7 +45,7 @@
 }
 
 .list-item-card {
-    height: 24px;
+    height: 50px;
     display: flex;
     flex-direction: row;
 }
