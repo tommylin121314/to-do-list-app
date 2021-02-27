@@ -4,7 +4,7 @@
     height:100%;
     display: grid;
     padding: 1px;
-    grid-template-rows: 5% 95%;
+    grid-template-rows: 6% 94%;
     grid-template-columns: 13% 87%;
 }
 
@@ -81,4 +81,65 @@
 
 .list-item-control {
     width: 20%;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+}
+
+.modal-content {
+    grid-template-rows: 50% 50%;
+    background-color: #353a44;
+    color: #e9edf0;
+    font-family: 'Consolas';
+    padding: 10px;
+    border-radius: 5px;
+    height: 150px;
+    width: 350px;
+    z-index: 1;
+    margin-left: 550px;
+    margin-top: 200px;
+}
+
+.modal-upper {
+    height: 70px;
+    grid-row: 1 / span 1;
+    border-bottom: dotted;
+}
+
+.modal-lower {
+    height: 70px;
+    grid-row: 2 / span 1;
+}
+
+#delete-prompt {
+    margin-left: 10px;
+    font-size: 25px;
+    padding-top: 25px;
+    float: left;
+}
+
+#exit-delete {
+    font-size: 25px;
+    margin-left: 335px;
+    padding-top: 25px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+#confirm-delete {
+    padding-top: 25px;
+    margin-left: 20px;
+    float: left;
+}
+
+#cancel-delete {
+    margin-left: 290px;
+    padding-top: 25px;
+    text-align: right;
+}
+
+.modal-buttons:hover {
+    background-color: #60656e;
 }

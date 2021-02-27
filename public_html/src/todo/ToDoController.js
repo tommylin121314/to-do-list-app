@@ -24,7 +24,18 @@ export default class ToDoController {
             appModel.redo();
         }
         document.getElementById("delete-list-button").onmousedown = function() {
-            appModel.removeCurrentList();
+            let modal = document.getElementById('my-modal');
+            modal.style.display = 'block';
+            document.getElementById('exit-delete').onclick = function() {
+                modal.style.display = 'none';
+            }
+            document.getElementById('cancel-delete').onclick = function() {
+                modal.style.display = 'none';
+            }
+            document.getElementById('confirm-delete').onclick = function() {
+                appModel.removeCurrentList();
+                modal.style.display = 'none';
+            }
         }
         document.getElementById("add-item-button").onmousedown = function() {
             appModel.addNewItemTransaction();
