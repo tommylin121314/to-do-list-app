@@ -83,14 +83,17 @@ export default class ToDoView {
                                 //+ " <div class='list-item-control'></div>"
                                 //+ "</div>";
 
+            //TASK ELEMENT DIV
             let listItemElement = document.createElement("div");
             listItemElement.id = 'todo-list-item-' + listItem.id;
             listItemElement.className = 'list-item-card';
 
+            //TASK NAME DIV
             let taskNameDiv = document.createElement('div');
             taskNameDiv.className = 'task-col';
             taskNameDiv.innerHTML = listItem.description;
 
+            //DUE DATE DIV
             let dueDateDiv = document.createElement('div');
             dueDateDiv.className = 'due-date-col';
             let dateSelect = document.createElement('input');
@@ -98,9 +101,9 @@ export default class ToDoView {
             dateSelect.value = listItem.dueDate;
             dueDateDiv.appendChild(dateSelect);
 
+            //STATUS DIV
             let statusDiv = document.createElement('div');
             statusDiv.className = 'status-col';
-
             let statusSelect = document.createElement('select');
             let statusOne = document.createElement('option');
             let statusTwo = document.createElement('option');
@@ -116,21 +119,26 @@ export default class ToDoView {
             statusSelect.appendChild(statusTwo);
             statusDiv.appendChild(statusSelect);
 
+            //CONTROL DIV
             let controlDiv = document.createElement('div');
             controlDiv.className = 'list-controls-col';
 
+            //UP ARROW DIV
             let upArrow = document.createElement('div');
             upArrow.className = 'list-item-control material-icons';
             upArrow.innerHTML = 'keyboard_arrow_up';
 
+            //DOWN ARROW DIV
             let downArrow = document.createElement('div');
             downArrow.className = 'list-item-control material-icons';
             downArrow.innerHTML = 'keyboard_arrow_down';
 
+            //DELETE ITEM DIV
             let deleteListButton = document.createElement("div");
             deleteListButton.className = 'list-item-control material-icons';
             deleteListButton.innerHTML = 'close';
 
+            //CONTROL DIVS
             let listItemControlOne = document.createElement("div");
             listItemControlOne.className = 'list-item-control';
 
@@ -146,6 +154,22 @@ export default class ToDoView {
             controlDiv.appendChild(listItemControlOne);
             controlDiv.appendChild(listItemControlTwo);
             listItemElement.appendChild(controlDiv);
+
+            taskNameDiv.onmouseenter = (event) => {
+                taskNameDiv.contentEditable = true;
+            }
+
+            taskNameDiv.onmouseleave = (event) => {
+                taskNameDiv.contentEditable = false;
+            }
+
+            taskNameDiv.onfocus = (event) => {
+                thisController.handleTextFocus(event);
+            }
+
+            taskNameDiv.onblur = (event) => {
+                thisController.handleTextChanged(event);
+            }
 
             upArrow.onclick = (event) => {
                 thisController.handleArrowClicked(event, true);

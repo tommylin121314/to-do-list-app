@@ -28,9 +28,9 @@ export default class ToDoController {
         }
         document.getElementById("add-item-button").onmousedown = function() {
             appModel.addNewItemTransaction();
-        }  
+        }
     }
-    
+
     // PROVIDES THE RESPONSE TO WHEN A USER CLICKS ON A LIST TO LOAD
     handleLoadList(listId) {
         // UNLOAD THE CURRENT LIST AND INSTEAD LOAD THE CURRENT LIST
@@ -66,4 +66,17 @@ export default class ToDoController {
         let itemId = idOfItemDiv.slice(15);
         this.model.changeItemOldDate(itemId, event.target.value);
     }
+
+    handleTextFocus(event) {
+        let idOfItemDiv = event.target.parentElement.id;
+        let itemId = idOfItemDiv.slice(15);
+        this.model.changeItemOldDescription(itemId, event.target.innerHTML);
+    }
+
+    handleTextChanged(event) {
+        let idOfItemDiv = event.target.parentElement.id;
+        let itemId = idOfItemDiv.slice(15);
+        this.model.changeDescriptionTransaction(itemId, event.target.innerHTML);
+    }
+
 }

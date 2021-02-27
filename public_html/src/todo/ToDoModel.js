@@ -8,6 +8,7 @@ import RemoveItem_Transaction from './transactions/removeItem_Transaction.js'
 import ChangeItemStatus_Transaction from './transactions/ChangeItemStatus_Transaction.js'
 import SwapItems_Transaction from './transactions/SwapItems_Transaction.js'
 import ChangeDate_Transaction from './transactions/ChangeDate_Transaction.js'
+import ChangeDescription_Transaction from './transactions/ChangeDescription_Transaction.js'
 
 /**
  * ToDoModel
@@ -127,6 +128,24 @@ export default class ToDoModel {
         this.view.viewList(this.currentList);
     }
 
+    changeItemOldDescription(id, oldDescription) {
+        let index = this.currentList.getIndexOfId(id);
+        this.currentList.changeItemOldDescription(index, oldDescription);
+    }
+
+    changeItemDescription(item, description) {
+        this.currentList.changeItemDescription(item, description);
+        this.view.viewList(this.currentList);
+    }
+
+    changeDescriptionTransaction(id, description) {
+        let index = this.currentList.getIndexOfId(id);
+        let item = this.currentList.items[index];
+        item.setDescription(description);
+        let transaction = new ChangeDescription_Transaction(this, item);
+        this.tps.addTransaction(transaction);
+    }
+
     changeItemDateTransaction(id, newDate) {
         let oldDate = this.currentList.items[this.currentList.getIndexOfId(id)].getOldDate();
         let transaction = new ChangeDate_Transaction(this, id, oldDate, newDate);
@@ -223,7 +242,6 @@ export default class ToDoModel {
      */
     undo() {
         if (this.tps.hasTransactionToUndo()) {
-            console.log("undo");
             this.tps.undoTransaction();
         }
     } 

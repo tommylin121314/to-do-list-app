@@ -68,6 +68,16 @@ export default class ToDoList {
         this.items[index].setOldDate(oldDate);
     }
 
+    changeItemOldDescription(index, oldDescription) {
+        console.log(this.items[index]);
+        this.items[index].setOldDescription(oldDescription);
+    }
+
+    changeItemDescription(item, description) {
+        let index = this.getIndexOfItem(item);
+        this.items[index].setDescription(description);
+    }
+
     /**
      * Finds and then removes the argument from the list.
      * 
