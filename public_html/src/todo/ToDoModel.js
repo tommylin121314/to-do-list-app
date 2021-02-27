@@ -195,8 +195,6 @@ export default class ToDoModel {
      */
     removeItem(itemId) {
         let itemRemoved = this.currentList.removeItem(itemId);
-        console.log("item removed");
-        console.log("desc: " + itemRemoved.getDescription());
         this.view.viewList(this.currentList);
         return itemRemoved;
     }

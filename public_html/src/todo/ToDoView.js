@@ -19,6 +19,7 @@ export default class ToDoView {
         listElement.setAttribute("id", newListId);
         listElement.setAttribute("class", "todo_button");
         listElement.appendChild(document.createTextNode(newList.name));
+        listElement.style.textAlign = 'center';
         listsElement.appendChild(listElement);
 
         // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST

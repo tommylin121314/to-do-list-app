@@ -45,14 +45,10 @@ export default class ToDoList {
             if(itemId == this.items[i].getId()) {
                 let item = this.items[i];
                 if(item.getStatus() == 'complete') {
-                    console.log("swapped from complete to ");
                     item.setStatus('incomplete');
-                    console.log(item.status);
                 }
                 else {
-                    console.log("swapped from incomplete to ");
                     item.setStatus('complete');
-                    console.log(item.status);
                 }
                 break;
             }
@@ -69,7 +65,6 @@ export default class ToDoList {
     }
 
     changeItemOldDescription(index, oldDescription) {
-        console.log(this.items[index]);
         this.items[index].setOldDescription(oldDescription);
     }
 
