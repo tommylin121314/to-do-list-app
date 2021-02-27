@@ -23,6 +23,7 @@ export default class ToDoView {
         listElement.style.height = '50px';
         listElement.style.verticalAlign = 'center';
         listElement.style.lineHeight = '50px';
+        listElement.style.fontSize = '19px';
         listsElement.appendChild(listElement);
 
         // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST
@@ -91,6 +92,8 @@ export default class ToDoView {
             let listItemElement = document.createElement("div");
             listItemElement.id = 'todo-list-item-' + listItem.id;
             listItemElement.className = 'list-item-card';
+            listItemElement.style.borderBottom = 'solid';
+            listItemElement.style.borderBottomWidth = '1px';
 
             //TASK NAME DIV
             let taskNameDiv = document.createElement('div');
@@ -114,13 +117,17 @@ export default class ToDoView {
             statusOne.innerHTML = 'incomplete';
             statusTwo.innerHTML = 'complete';
             if(listItem.status == 'incomplete') {
+                statusSelect.style.color = '#ffc819';
                 statusOne.selected = true;
             }
             else {
+                statusSelect.style.color = '#ffc819';
+                statusSelect.style.color = 'dodgerblue';
                 statusTwo.selected = true;
             }
             statusSelect.appendChild(statusOne);
             statusSelect.appendChild(statusTwo);
+            statusSelect.style.width = '250px';
             statusDiv.appendChild(statusSelect);
 
             //CONTROL DIV
@@ -158,6 +165,14 @@ export default class ToDoView {
             controlDiv.appendChild(listItemControlOne);
             controlDiv.appendChild(listItemControlTwo);
             listItemElement.appendChild(controlDiv);
+
+            listItemElement.onmouseenter = (event) => {
+                listItemElement.style.backgroundColor = '#111111';
+            }
+
+            listItemElement.onmouseleave = (event) => {
+                listItemElement.style.backgroundColor = '#40454e';
+            }
 
             taskNameDiv.onmouseenter = (event) => {
                 taskNameDiv.contentEditable = true;

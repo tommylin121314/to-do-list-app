@@ -40,20 +40,70 @@
     color: rgb(233,237,240);
 }
 
+#task-col-header {
+    background-color: var(--swatch-primary);
+}
+
+#date-col-header {
+    background-color: var(--swatch-primary);
+}
+
+#status-col-header {
+    background-color: var(--swatch-primary);
+}
+
+#add-item-button {
+    background-color: var(--swatch-primary);
+}
+#delete-list-button {
+    background-color: var(--swatch-primary);
+}
+#close-list-button {
+    background-color: var(--swatch-primary);
+}
+
 #title-div {
     color: rgb(255,200,25);
     font-weight: bold;
-    font-size: 20pt;
+    font-size: 24px;
     margin-left: 10px;
     margin-top: 7px;
 }
 
+input {
+    border: none;
+    background-color: transparent;
+    font-family: 'Consolas';
+    font-size: 15px;
+    color: var(--swatch-text);
+}
+
+select {
+    border: transparent;
+    font-family: 'Consolas';
+    font-size: 15px;
+    background-color: var(--swatch-primary);
+}
+
+select option {
+    color: var(--swatch-text);
+}
+
 #left-sidebar-header {
+    border-bottom: dotted;
+    background-color: var(--swatch-complement);
+}
+
+.left-sidebar-header-text {
+    font-size: 19px;
+}
+
+#todo-list-header-card {
     border-bottom: dotted;
 }
 
-#todo-list-table-header {
-    border-bottom: dotted;
+#add-list-button {
+    color: #ffc800;
 }
 
 .list-header-card {
@@ -61,12 +111,42 @@
 }
 
 .list-item-card {
-    border-bottom: solid;
+    border-bottom: dotted;
+    font-size: 19px;
 }
 
 .todo_button {
+    line-height: 24px;
     cursor:pointer;
     background-color: var(--swatch-complement);
+}
+
+#add-item-button:hover {
+    background-color: var(--swatch-contrast);
+}
+
+#delete-list-button:hover {
+    background-color: var(--swatch-contrast);
+}
+
+#close-list-button:hover {
+    background-color: var(--swatch-contrast);
+}
+
+#task-col-header:hover {
+    background-color: var(--swatch-contrast);
+}
+
+#date-col-header:hover {
+    background-color: var(--swatch-contrast);
+}
+
+#status-col-header:hover {
+    background-color: var(--swatch-contrast);
+}
+
+.left-sidebar-header-text:hover {
+    background-color: var(--swatch-contrast);
 }
 
 .todo_button:hover {
