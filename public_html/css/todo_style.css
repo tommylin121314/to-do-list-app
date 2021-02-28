@@ -13,6 +13,9 @@
     --swatch-text:          #e9edf0; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */ 
     --swatch-text-accent:   #ffc819; /* USED IN MOUSE-OVER SELECTION OF TEXT AND BORDERS */  
 
+    --white-highlight-transparent: #f9f7f111;
+    --white-highlight: #f9f7f1af;
+
     --font-primary:         'Consolas', serif;
 }
 
@@ -122,33 +125,37 @@ select option {
 }
 
 #add-item-button:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight);
 }
 
 #delete-list-button:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight);
 }
 
 #close-list-button:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight);
 }
 
 #task-col-header:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight-transparent);
 }
 
 #date-col-header:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight-transparent);
 }
 
 #status-col-header:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight-transparent);
 }
 
 .left-sidebar-header-text:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight-transparent);
 }
 
 .todo_button:hover {
-    background-color: var(--swatch-contrast);
+    background-color: var(--white-highlight);
+}
+
+.list-item-control:hover {
+    background:var(--white-highlight);
 }

@@ -167,7 +167,7 @@ export default class ToDoView {
             listItemElement.appendChild(controlDiv);
 
             listItemElement.onmouseenter = (event) => {
-                listItemElement.style.backgroundColor = '#111111';
+                listItemElement.style.backgroundColor = '#f9f7f111';
             }
 
             listItemElement.onmouseleave = (event) => {
