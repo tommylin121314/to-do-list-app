@@ -156,6 +156,6 @@ select option {
     background-color: var(--white-highlight);
 }
 
-.list-item-control:hover {
-    background:var(--white-highlight);
+#delete-item:hover, #up-arrow:hover, #down-arrow:hover {
+    background-color: var(--white-highlight);
 }

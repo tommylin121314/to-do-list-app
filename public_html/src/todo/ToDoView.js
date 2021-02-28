@@ -31,13 +31,16 @@ export default class ToDoView {
         listElement.onmousedown = function() {
             for(var i = 0; i < listsElement.children.length; i++){
                 listsElement.children.item(i).style.backgroundColor = '';
-                listsElement.children.item(i).style.color = '#FFFFFF';
+                listsElement.children.item(i).style.color = '';
             }
             listElement.style.color = '#000000';
             listElement.style.backgroundColor = '#FFC819';
             listsElement.insertBefore(listElement, listsElement.childNodes[0]);
             thisController.handleLoadList(newList.id);
+            thisController.flushTransactions();
         }
+
+        
     }
 
     // REMOVES ALL THE LISTS FROM THE LEFT SIDEBAR
@@ -47,6 +50,14 @@ export default class ToDoView {
         let parent = itemsListDiv;
         while (parent.firstChild) {
             parent.removeChild(parent.firstChild);
+        }
+    }
+
+    resetListsSelection() {
+        let lists = document.getElementById("todo-lists-list").childNodes;
+        for(let i = 0; i < lists.length; i++) {
+            lists[i].style.backgroundColor = '';
+            lists[i].style.color = '';
         }
     }
 
@@ -76,17 +87,6 @@ export default class ToDoView {
         for (let i = 0; i < list.items.length; i++) {
             // NOW BUILD ALL THE LIST ITEMS
             let listItem = list.items[i];
-            //let listItemElementt = "<div id='todo-list-item-" + listItem.id + "' class='list-item-card'>"
-                                //+ "<div class='task-col' contenteditable>" + listItem.description + "</div>"
-                                //+ "<div class='due-date-col'>" + listItem.dueDate + "</div>"
-                                //+ "<div class='status-col'>" + listItem.status + "</div>"
-                                //+ "<div class='list-controls-col'>"
-                                //+ " <div class='list-item-control material-icons'>keyboard_arrow_up</div>"
-                                //+ " <div class='list-item-control material-icons'>keyboard_arrow_down</div>"
-                                //+ " <div class='list-item-control material-icons'>close</div>"
-                                //+ " <div class='list-item-control'></div>"
-                                //+ " <div class='list-item-control'></div>"
-                                //+ "</div>";
 
             //TASK ELEMENT DIV
             let listItemElement = document.createElement("div");
@@ -138,16 +138,19 @@ export default class ToDoView {
             let upArrow = document.createElement('div');
             upArrow.className = 'list-item-control material-icons';
             upArrow.innerHTML = 'keyboard_arrow_up';
+            upArrow.id = 'up-arrow';
 
             //DOWN ARROW DIV
             let downArrow = document.createElement('div');
             downArrow.className = 'list-item-control material-icons';
             downArrow.innerHTML = 'keyboard_arrow_down';
+            downArrow.id = 'down-arrow';
 
             //DELETE ITEM DIV
             let deleteListButton = document.createElement("div");
             deleteListButton.className = 'list-item-control material-icons';
             deleteListButton.innerHTML = 'close';
+            deleteListButton.id = 'delete-item';
 
             //CONTROL DIVS
             let listItemControlOne = document.createElement("div");

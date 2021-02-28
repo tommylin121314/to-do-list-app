@@ -40,6 +40,10 @@ export default class ToDoController {
         document.getElementById("add-item-button").onmousedown = function() {
             appModel.addNewItemTransaction();
         }
+        document.getElementById("close-list-button").onmousedown = function() {
+            appModel.clearCurrentList();
+            appModel.resetListsSelection();
+        }
     }
 
     // PROVIDES THE RESPONSE TO WHEN A USER CLICKS ON A LIST TO LOAD
@@ -88,6 +92,12 @@ export default class ToDoController {
         let idOfItemDiv = event.target.parentElement.id;
         let itemId = idOfItemDiv.slice(15);
         this.model.changeDescriptionTransaction(itemId, event.target.innerHTML);
+    }
+
+    
+
+    flushTransactions() {
+        this.model.flushTransactions();
     }
 
 }

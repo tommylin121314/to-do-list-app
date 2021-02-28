@@ -152,6 +152,14 @@ export default class ToDoModel {
         this.tps.addTransaction(transaction);
     }
 
+    clearCurrentList() {
+        this.view.clearItemsList();
+    }
+
+
+    flushTransactions() {
+        this.tps.clearAllTransactions();
+    }
     /**
      * Makes a new list item with the provided data and adds it to the list.
      */
@@ -262,4 +270,8 @@ export default class ToDoModel {
             this.tps.doTransaction();
         }
     }   
+
+    resetListsSelection() {
+        this.view.resetListsSelection();
+    }
 }
