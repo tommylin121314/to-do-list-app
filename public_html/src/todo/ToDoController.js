@@ -13,6 +13,10 @@ export default class ToDoController {
         this.model = initModel;
         let appModel = this.model;
 
+        document.getElementById('delete-list-button').className += " disabled-button";
+        document.getElementById('add-item-button').className += " disabled-button";
+        document.getElementById('close-list-button').className += " disabled-button";
+
         // SETUP ALL THE EVENT HANDLERS SINCE THEY USE THE MODEL
         document.getElementById("add-list-button").onmousedown = function() {
             appModel.addNewList();

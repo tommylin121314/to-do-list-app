@@ -98,8 +98,7 @@
     height: 150px;
     width: 350px;
     z-index: 1;
-    margin-left: 550px;
-    margin-top: 200px;
+    margin: 250px 550px 400px 550px;
 }
 
 .modal-upper {

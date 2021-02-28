@@ -161,6 +161,21 @@ export default class ToDoModel {
         this.view.clearItemsList();
     }
 
+    checkTransactionStack() {
+        if(!this.tps.hasTransactionToUndo()) {
+            document.getElementById('undo-button').className += ' disabled-button';
+        }
+        else {
+            document.getElementById('undo-button').className = 'material-icons todo_button';
+        }
+
+        if(!this.tps.hasTransactionToRedo()) {
+            document.getElementById('redo-button').className += ' disabled-button';
+        }
+        else {
+            document.getElementById('redo-button').className = 'material-icons todo_button';
+        }
+    }
 
     flushTransactions() {
         this.tps.clearAllTransactions();
@@ -237,11 +252,9 @@ export default class ToDoModel {
         let index = this.currentList.getIndexOfId(id);
 
         if(up && (index == 0)) {
-            console.log("index 0 up");
             return;
         }
         else if((!up) && (index == this.currentList.items.length - 1)) {
-            console.log("last item down");
             return;
         }
 
