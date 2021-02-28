@@ -10,6 +10,7 @@ export default class ToDoView {
 
     // ADDS A LIST TO SELECT FROM IN THE LEFT SIDEBAR
     appendNewListToView(newList) {
+        let cont = this.controller;
         // GET THE UI CONTROL WE WILL APPEND IT TO
         let listsElement = document.getElementById("todo-lists-list");
 
@@ -18,7 +19,9 @@ export default class ToDoView {
         let listElement = document.createElement("div");
         listElement.setAttribute("id", newListId);
         listElement.setAttribute("class", "todo_button");
-        listElement.appendChild(document.createTextNode(newList.name));
+        let textNode = document.createElement('div');
+        textNode.innerHTML = newList.name;
+        listElement.appendChild(textNode);
         listElement.style.textAlign = 'center';
         listElement.style.height = '50px';
         listElement.style.verticalAlign = 'center';
@@ -40,7 +43,6 @@ export default class ToDoView {
             thisController.flushTransactions();
         }
 
-        
     }
 
     // REMOVES ALL THE LISTS FROM THE LEFT SIDEBAR
@@ -75,6 +77,9 @@ export default class ToDoView {
 
     // LOADS THE list ARGUMENT'S ITEMS INTO THE VIEW
     viewList(list) {
+        document.getElementById('delete-list-button').className = 'list-item-control material-icons todo_button';
+        document.getElementById('add-item-button').className = 'list-item-control material-icons todo_button';
+        document.getElementById('close-list-button').className = 'list-item-control material-icons todo_button';
         // WE'LL BE ADDING THE LIST ITEMS TO OUR WORKSPACE
         let itemsListDiv = document.getElementById("todo-list-items-div");
 
@@ -145,6 +150,14 @@ export default class ToDoView {
             downArrow.className = 'list-item-control material-icons';
             downArrow.innerHTML = 'keyboard_arrow_down';
             downArrow.id = 'down-arrow';
+
+            if(i == 0) {
+                upArrow.className += ' disabled-button';
+            }
+
+            if(i == list.items.length - 1) {
+                downArrow.className += ' disabled-button';
+            }
 
             //DELETE ITEM DIV
             let deleteListButton = document.createElement("div");

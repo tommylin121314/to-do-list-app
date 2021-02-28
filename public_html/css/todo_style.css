@@ -159,3 +159,9 @@ select option {
 #delete-item:hover, #up-arrow:hover, #down-arrow:hover {
     background-color: var(--white-highlight);
 }
+
+.disabled-button {
+    pointer-events: none;
+    color: #999999;
+    opacity: 0.5;
+}

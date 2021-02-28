@@ -23,7 +23,8 @@ export default class ToDoController {
         document.getElementById("redo-button").onmousedown = function() {
             appModel.redo();
         }
-        document.getElementById("delete-list-button").onmousedown = function() {
+        let deleteList = document.getElementById("delete-list-button");
+        deleteList.onmousedown = function() {
             let modal = document.getElementById('my-modal');
             modal.style.display = 'block';
             document.getElementById('exit-delete').onclick = function() {
@@ -43,6 +44,9 @@ export default class ToDoController {
         document.getElementById("close-list-button").onmousedown = function() {
             appModel.clearCurrentList();
             appModel.resetListsSelection();
+            document.getElementById('delete-list-button').className += " disabled-button";
+            document.getElementById('add-item-button').className += " disabled-button";
+            document.getElementById('close-list-button').className += " disabled-button";
         }
     }
 
@@ -94,10 +98,19 @@ export default class ToDoController {
         this.model.changeDescriptionTransaction(itemId, event.target.innerHTML);
     }
 
-    
+    handleListOnFocusEvent(event) {
+        let listId = event.target.parentElement.id.slice(10);
+        this.model.changeCurrentListOldName(listId, event.target.innerHTML);
+    }
 
     flushTransactions() {
+        document.getElementById('undo-button').className += " disabled-button";
+        document.getElementById('redo-button').className += " disabled-button";
         this.model.flushTransactions();
+    }
+
+    setModelCurrentList(id) {
+        this.model.setModelCurrentList(id);
     }
 
 }

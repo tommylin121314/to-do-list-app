@@ -152,7 +152,12 @@ export default class ToDoModel {
         this.tps.addTransaction(transaction);
     }
 
+    changeCurrentListOldName(id, oldName) {
+        this.currentList.setOldName(oldName);
+    }
+
     clearCurrentList() {
+        document.getElementById('delete-list-button').className += ' disabled-button';
         this.view.clearItemsList();
     }
 
@@ -273,5 +278,14 @@ export default class ToDoModel {
 
     resetListsSelection() {
         this.view.resetListsSelection();
+    }
+
+    setModelCurrentList(id) {
+        for(let i = 0; i < this.toDoLists.length; i++) {
+            if(this.toDoLists[i].id == id) {
+                this.currentList = this.toDoLists[i];
+                return;
+            }
+        }
     }
 }

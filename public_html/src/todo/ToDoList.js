@@ -13,6 +13,7 @@ export default class ToDoList {
      */
     constructor(initId) {
         this.id = initId;
+        this.oldName = '';
         this.name = "Unnknown";
         this.items = [];
     }   
@@ -25,6 +26,15 @@ export default class ToDoList {
 
     getName() {
         return this.name;
+    }
+
+    setOldName(initName) {
+        console.log("old name set as " + initName);
+        this.oldName = initName;
+    }
+
+    getOldName() {
+        return this.oldName;
     }
 
     getId() {
