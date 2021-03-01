@@ -9,6 +9,7 @@ import ChangeItemStatus_Transaction from './transactions/ChangeItemStatus_Transa
 import SwapItems_Transaction from './transactions/SwapItems_Transaction.js'
 import ChangeDate_Transaction from './transactions/ChangeDate_Transaction.js'
 import ChangeDescription_Transaction from './transactions/ChangeDescription_Transaction.js'
+import ChangeListName_Transaction from './transactions/ChangeListName_Transaction.js'
 
 /**
  * ToDoModel
@@ -152,29 +153,35 @@ export default class ToDoModel {
         this.tps.addTransaction(transaction);
     }
 
-    changeCurrentListOldName(id, oldName) {
-        this.currentList.setOldName(oldName);
+    changeCurrentListOldName(oldName, id) {
+        let index = -1;
+        for(let i = 0; i < this.toDoLists.length; i++) {
+            if(id == this.toDoLists[i].id) {
+                index = i;
+                break;
+            }
+        }
+        this.toDoLists[index].setOldName(oldName);
+    }
+
+    changeListNameTransaction(newName, id) {
+        let index = -1;
+        for(let i = 0; i < this.toDoLists.length; i++) {
+            if(id == this.toDoLists[i].id) {
+                index = i;
+                break;
+            }
+        }
+        if(newName != this.toDoLists[index].oldName) {
+            let oldName = this.toDoLists[index].oldName;
+            let transaction = new ChangeListName_Transaction(this, this.toDoLists[index], oldName, newName);
+            this.tps.addTransaction(transaction);
+        }
     }
 
     clearCurrentList() {
         document.getElementById('delete-list-button').className += ' disabled-button';
         this.view.clearItemsList();
-    }
-
-    checkTransactionStack() {
-        if(!this.tps.hasTransactionToUndo()) {
-            document.getElementById('undo-button').className += ' disabled-button';
-        }
-        else {
-            document.getElementById('undo-button').className = 'material-icons todo_button';
-        }
-
-        if(!this.tps.hasTransactionToRedo()) {
-            document.getElementById('redo-button').className += ' disabled-button';
-        }
-        else {
-            document.getElementById('redo-button').className = 'material-icons todo_button';
-        }
     }
 
     flushTransactions() {
@@ -291,6 +298,10 @@ export default class ToDoModel {
 
     resetListsSelection() {
         this.view.resetListsSelection();
+    }
+
+    refreshListsView() {
+        this.view.refreshLists(this.toDoLists);
     }
 
     setModelCurrentList(id) {

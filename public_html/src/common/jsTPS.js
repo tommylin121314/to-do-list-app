@@ -112,7 +112,6 @@ export default class jsTPS {
      * there are transactions on the stack that can be redone.
      */
     hasTransactionToRedo() {
-        console.log(this.mostRecentTransaction + "  " + this.numTransactions);
         return (this.mostRecentTransaction+1) < this.numTransactions;
     }
 

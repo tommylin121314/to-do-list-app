@@ -29,7 +29,6 @@ export default class ToDoList {
     }
 
     setOldName(initName) {
-        console.log("old name set as " + initName);
         this.oldName = initName;
     }
 

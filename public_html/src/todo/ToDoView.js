@@ -19,9 +19,12 @@ export default class ToDoView {
         let listElement = document.createElement("div");
         listElement.setAttribute("id", newListId);
         listElement.setAttribute("class", "todo_button");
+
         let textNode = document.createElement('div');
         textNode.innerHTML = newList.name;
+        textNode.contentEditable = true;
         listElement.appendChild(textNode);
+
         listElement.style.textAlign = 'center';
         listElement.style.height = '50px';
         listElement.style.verticalAlign = 'center';
@@ -32,17 +35,31 @@ export default class ToDoView {
         // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST
         let thisController = this.controller;
         listElement.onmousedown = function() {
+
+            //Resets list styling to default
             for(var i = 0; i < listsElement.children.length; i++){
                 listsElement.children.item(i).style.backgroundColor = '';
                 listsElement.children.item(i).style.color = '';
             }
+
+            //changes style of selected list
             listElement.style.color = '#000000';
             listElement.style.backgroundColor = '#FFC819';
             listsElement.insertBefore(listElement, listsElement.childNodes[0]);
             thisController.handleLoadList(newList.id);
+
+            //clears transactions
             thisController.flushTransactions();
         }
 
+
+        textNode.onfocus = (event) => {
+            thisController.handleListNameFocus(event);
+        }
+
+        textNode.onblur = (event) => {
+            thisController.handleListNameBlur(event);
+        }
     }
 
     // REMOVES ALL THE LISTS FROM THE LEFT SIDEBAR
