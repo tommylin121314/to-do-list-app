@@ -94,6 +94,9 @@ export default class ToDoView {
 
     // LOADS THE list ARGUMENT'S ITEMS INTO THE VIEW
     viewList(list) {
+        // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST
+        let thisController = this.controller;
+
         document.getElementById('delete-list-button').className = 'list-item-control material-icons todo_button';
         document.getElementById('add-item-button').className = 'list-item-control material-icons todo_button';
         document.getElementById('close-list-button').className = 'list-item-control material-icons todo_button';
@@ -102,9 +105,6 @@ export default class ToDoView {
 
         // GET RID OF ALL THE ITEMS
         this.clearItemsList();
-
-        // SETUP THE HANDLER FOR WHEN SOMEONE MOUSE CLICKS ON OUR LIST
-        let thisController = this.controller;
 
         for (let i = 0; i < list.items.length; i++) {
             // NOW BUILD ALL THE LIST ITEMS

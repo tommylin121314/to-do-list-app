@@ -9,7 +9,6 @@ import ChangeItemStatus_Transaction from './transactions/ChangeItemStatus_Transa
 import SwapItems_Transaction from './transactions/SwapItems_Transaction.js'
 import ChangeDate_Transaction from './transactions/ChangeDate_Transaction.js'
 import ChangeDescription_Transaction from './transactions/ChangeDescription_Transaction.js'
-import ChangeListName_Transaction from './transactions/ChangeListName_Transaction.js'
 
 /**
  * ToDoModel
@@ -109,6 +108,25 @@ export default class ToDoModel {
         return newItem;
     }
 
+    changeListName(newName, id) {
+        for(let i = 0; i < this.toDoLists.length; i++) {
+        if(this.toDoLists[i].id == id && newName != this.toDoLists[i].name) {
+                this.toDoLists[i].name = newName;
+                console.log("list with id " + id + " changed name to " + this.toDoLists[i].name);
+                return;
+            }
+        }
+    }
+
+    changeListOldName(oldName, id) {
+        for(let i = 0; i < this.toDoLists.length; i++) {
+            if(this.toDoLists[i].id == id) {
+                this.toDoLists[i].oldName = oldName;
+                return;
+            }
+        }
+    }
+
     changeItemStatusTransaction(itemId) {
         let transaction = new ChangeItemStatus_Transaction(this, itemId);
         this.tps.addTransaction(transaction);
@@ -151,32 +169,6 @@ export default class ToDoModel {
         let oldDate = this.currentList.items[this.currentList.getIndexOfId(id)].getOldDate();
         let transaction = new ChangeDate_Transaction(this, id, oldDate, newDate);
         this.tps.addTransaction(transaction);
-    }
-
-    changeCurrentListOldName(oldName, id) {
-        let index = -1;
-        for(let i = 0; i < this.toDoLists.length; i++) {
-            if(id == this.toDoLists[i].id) {
-                index = i;
-                break;
-            }
-        }
-        this.toDoLists[index].setOldName(oldName);
-    }
-
-    changeListNameTransaction(newName, id) {
-        let index = -1;
-        for(let i = 0; i < this.toDoLists.length; i++) {
-            if(id == this.toDoLists[i].id) {
-                index = i;
-                break;
-            }
-        }
-        if(newName != this.toDoLists[index].oldName) {
-            let oldName = this.toDoLists[index].oldName;
-            let transaction = new ChangeListName_Transaction(this, this.toDoLists[index], oldName, newName);
-            this.tps.addTransaction(transaction);
-        }
     }
 
     clearCurrentList() {

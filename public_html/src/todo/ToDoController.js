@@ -57,13 +57,13 @@ export default class ToDoController {
     handleListNameFocus(event) {
         let id = event.target.parentElement.id.slice(10);
         let oldName = event.target.innerHTML;
-        this.model.changeCurrentListOldName(oldName, id);
+        this.model.changeListOldName(oldName, id);
     }
 
     handleListNameBlur(event) {
         let id = event.target.parentElement.id.slice(10);
         let newName = event.target.innerHTML;
-        this.model.changeListNameTransaction(newName, id);
+        this.model.changeListName(newName, id);
     }
 
     // PROVIDES THE RESPONSE TO WHEN A USER CLICKS ON A LIST TO LOAD
