@@ -250,6 +250,20 @@ export default class ToDoView {
             //itemsListDiv.appendChild(listItemElement);
             itemsListDiv.appendChild(listItemElement);
         }
+        setTimeout(() => {
+            if(thisController.model.tps.hasTransactionToUndo()) {
+                document.getElementById("undo-button").className = 'material-icons todo_button';
+            }
+            else {
+                document.getElementById('undo-button').className += ' disabled-button';
+            }
+            if(thisController.model.tps.hasTransactionToRedo()) {
+                document.getElementById("redo-button").className = 'material-icons todo_button';
+            }
+            else {
+                document.getElementById('redo-button').className += ' disabled-button';
+            }
+        }, 20);
     }
 
     // THE VIEW NEEDS THE CONTROLLER TO PROVIDE PROPER RESPONSES
